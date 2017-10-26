@@ -11,7 +11,7 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/mdelano/oauth-php"
+            "url": "https://github.com/mdelano/oauth-php.git"
         }
     ],
     "require" : {
