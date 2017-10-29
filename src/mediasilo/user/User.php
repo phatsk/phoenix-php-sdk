@@ -226,7 +226,17 @@ class User {
 
     public static function fromJson($json) {
         $mixed = json_decode($json);
-        return new User($mixed->address, $mixed->company, $mixed->defaultRoleTemplateId, $mixed->email, $mixed->firstName,
+
+		$address = new \mediasilo\user\Address(
+			$mixed->address->address1,
+			$mixed->address->address2,
+			$mixed->address->city,
+			$mixed->address->country,
+			$mixed->address->postalCode,
+			$mixed->address->province
+		);
+
+        return new User($address, $mixed->company, $mixed->defaultRoleTemplateId, $mixed->email, $mixed->firstName,
             $mixed->id, $mixed->lastName, $mixed->mobile, $mixed->numericId, $mixed->phone, $mixed->roles, $mixed->sso,
             $mixed->ssoId, $mixed->status, $mixed->userName, $mixed->tags);
     }
@@ -253,4 +263,14 @@ class User {
         $responseObj->password = $this->getPassword();
         return json_encode($responseObj);
     }
+
+	/**
+	 * Prepare the user for creation.
+	 *
+	 * We need to clear the roles and id because a new user doesn't get those.
+	 */
+	public function prepareForCreate() {
+		$this->roles = null;
+		$this->id    = null;
+	}
 }

@@ -18,7 +18,8 @@ class UserProxy {
     }
 
     public function createUser(User $user) {
-        $result = json_decode($this->webClient->post(MediaSiloResourcePaths::USERS, $user->toJson()));
+		$user->prepareForCreate();
+		$result = json_decode($this->webClient->post(MediaSiloResourcePaths::USERS, $user->toJson()));
         $user->setId($result->id);
     }
 
