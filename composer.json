@@ -2,6 +2,7 @@
     "name" : "geg/wds-phoenix-php-sdk",
 	"description": "Custom fork of the phoenix-php-sdk for MediaSilo.",
 	"license": "proprietary",
+	"minimum-stability": "dev",
     "autoload": {
         "psr-0": {
             "mediasilo\\": "src/"
