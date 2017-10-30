@@ -1838,4 +1838,24 @@ class MediaSiloAPI
         return $this->batchProxy->processRequests($requests);
     }
 
+	public function addUserToProject( $project_id, $user_id, $role_template_id ) {
+		static $endpoint = '/projects/:projectId/users/:userId/roletemplates/:roleTemplateId';
+		$resourcePath = strtr( $endpoint, [
+			':projectId'      => $project_id,
+			':userId'         => $user_id,
+			':roleTemplateId' => $role_template_id,
+		] );
+
+        return $this->webClient->post($resourcePath, '');
+	}
+
+	public function deleteUser( $user_id ) {
+		static $endpoint = '/users/:userId';
+
+		$resourcePath = strtr( $endpoint, [
+			':userId'         => $user_id,
+		] );
+
+		return $this->webClient->delete( $resourcePath );
+	}
 }
