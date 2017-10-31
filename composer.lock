@@ -4,45 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "1c78cba03dd8394a6f603064d068f1fb",
-    "packages": [
-        {
-            "name": "mdelano/oauth-php",
-            "version": "0.0.14",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mdelano/oauth-php.git",
-                "reference": "6722b83d28d81233f9ff6293e6af60b0a356878e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mdelano/oauth-php/zipball/6722b83d28d81233f9ff6293e6af60b0a356878e",
-                "reference": "6722b83d28d81233f9ff6293e6af60b0a356878e",
-                "shasum": ""
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "library/"
-                ]
-            },
-            "license": [
-                "mit"
-            ],
-            "authors": [
-                {
-                    "name": "mdelano",
-                    "email": "mike@mediasilo.com"
-                }
-            ],
-            "description": "Fork of Oauth-PHP http://oauth-php.googlecode.com",
-            "support": {
-                "source": "https://github.com/mdelano/oauth-php/tree/0.0.14",
-                "issues": "https://github.com/mdelano/oauth-php/issues"
-            },
-            "time": "2014-08-18T20:36:08+00:00"
-        }
-    ],
+    "content-hash": "5c48c6d40e20989cc4f367e890bb6119",
+    "packages": [],
     "packages-dev": [
         {
             "name": "phpunit/php-code-coverage",
@@ -103,7 +66,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2014-09-02T10:13:14+00:00"
+            "time": "2014-09-02 10:13:14"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -150,7 +113,7 @@
                 "filesystem",
                 "iterator"
             ],
-            "time": "2017-10-30T04:21:02+00:00"
+            "time": "2017-10-30 04:21:02"
         },
         {
             "name": "phpunit/php-text-template",
@@ -240,7 +203,7 @@
             "keywords": [
                 "timer"
             ],
-            "time": "2017-03-07T15:42:04+00:00"
+            "time": "2017-03-07 15:42:04"
         },
         {
             "name": "phpunit/php-token-stream",
@@ -363,7 +326,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2014-10-17T09:04:17+00:00"
+            "time": "2014-10-17 09:04:17"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -420,7 +383,7 @@
                 "mock",
                 "xunit"
             ],
-            "time": "2014-02-16T12:43:56+00:00"
+            "time": "2014-02-16 12:43:56"
         },
         {
             "name": "symfony/yaml",
@@ -469,7 +432,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2017-10-05T14:38:30+00:00"
+            "time": "2017-10-05 14:38:30"
         }
     ],
     "aliases": [],

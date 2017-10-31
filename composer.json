@@ -11,15 +11,7 @@
             "src/mediasilo/lib/shims.php"
         ]
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/mdelano/oauth-php"
-        }
-    ],
-    "require" : {
-        "mdelano/oauth-php": "0.0.14"
-    },
+    "repositories": [],
     "require-dev": {
         "phpunit/phpunit": "3.7.*"
     }
