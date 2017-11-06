@@ -1,6 +1,28 @@
-![MediaSilo](https://s3.amazonaws.com/mediasilo-phoenix-php-sdk/mediasilo-logo.jpg) 
+![MediaSilo](https://s3.amazonaws.com/mediasilo-phoenix-php-sdk/mediasilo-logo.jpg)
 PHP SDK
 ===============
+### Caveat
+
+**This is a WDS fork** of https://github.com/mediasilo/phoenix-php-sdk
+
+This fork includes functionality that was either lacking or completely missing from MediaSilo's repository. An example
+of why this was necessary is that a simple pull request to the original repo has gone unanswered for two weeks and we
+needed to move faster than that.
+
+### Changelog
+
+#### 1.0.5
+
+- Fix for updating users to allow changing passwords.
+- Add `\mediasilo\user\User::fromArray` method to get a user based on an array of arguments.
+- No longer require mdelano's oauth-php library.
+
+#### 1.0.4
+
+- Fix user profile update to pass properly `roles` argument when empty.
+- Allow deleting a user.
+- Various fixes for handling errors and general cleanup.
+
 #### Overview
 
 MediaSilo makes it easy to share and collaborate with your team and customers anywhere. Check out our full feature set [here](https://www.mediasilo.com/features.php)!
@@ -13,7 +35,7 @@ The SDK is most easily used with [Composer](https://getcomposer.org). To install
 ```bash
 cd <YOUR PROJECT ROOT>
 curl -sS https://getcomposer.org/installer | php
-```   
+```
 
 Check to see that composer has been installed:
 ```php
@@ -29,18 +51,12 @@ Install the SDK's dependencies:
 
 #### Install the SDK into your project
 
-In the root of your project create a composer.json as follows. More info on getting started with composer can be found [here](https://getcomposer.org/doc/00-intro.md). 
+In the root of your project create a composer.json as follows. More info on getting started with composer can be found [here](https://getcomposer.org/doc/00-intro.md).
 
 ```json
 {
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/mdelano/oauth-php"
-        }
-    ],
     "require" : {
-        "mediasilo/phoenix-php-sdk": "0.7.6
+        "phatsk/phoenix-php-sdk": "1.0.5"
     }
 }
 ```
