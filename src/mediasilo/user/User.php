@@ -23,6 +23,7 @@ class User {
     private $roles;
     private $tags;
     private $password;
+	private $oldPassword;
 
     function __construct(Address $address, $company, $defaultRoleTemplateId, $email, $firstName, $id, $lastName, $mobile, $numericId, $phone, array $roles, $sso, $ssoId, $status, $userName)
     {
@@ -204,9 +205,10 @@ class User {
         return $this->userName;
     }
 
-    public function setPassword($password)
+    public function setPassword($password, $old_password = null)
     {
-        $this->password = $password;
+        $this->password    = $password;
+		$this->oldPassword = $old_password;
     }
 
     public function getPassword()
@@ -261,6 +263,7 @@ class User {
         $responseObj->roles = $this->getRoles();
         $responseObj->tags = $this->getTags();
         $responseObj->password = $this->getPassword();
+        $responseObj->oldPassword = $this->getOldPassword();
         return json_encode($responseObj);
     }
 
@@ -273,4 +276,57 @@ class User {
 		$this->roles = null;
 		$this->id    = null;
 	}
+
+	/**
+	 * Create a user object from an array of arguments.
+	 *
+	 * @param  array                $args Array of user arguments.
+	 * @return \mediasilo\user\User
+	 */
+	public static function fromArray( array $args ) {
+		static $defaults = [
+			'userId'                => 'required',
+			'firstName'             => null,
+			'lastName'              => null,
+			'userName'              => null,
+			'email'                 => null,
+			'password'              => null,
+			'address'               => null,
+			'phone'                 => null,
+			'mobile'                => null,
+			'company'               => null,
+			'status'                => null,
+			'defaultRoleTemplateId' => null,
+		];
+
+		$args = \mediasilo\MediaSiloAPI::parseArgs($defaults, $args, true);
+		return new self(
+			$args['address']               ?? new Address('', '', '', '', '', ''),
+			$args['company']               ?? null,
+			$args['defaultRoleTemplateId'] ?? null,
+			$args['email']                 ?? null,
+			$args['firstName']             ?? null,
+			$args['userId']                ?? null,
+			$args['lastName']              ?? null,
+			$args['mobile']                ?? null,
+			$args['numericId']             ?? null,
+			$args['phone']                 ?? null,
+			$args['roles']                 ?? [],
+			$args['sso']                   ?? null,
+			$args['ssoId']                 ?? null,
+			$args['status']                ?? 'ACTIVE',
+			$args['userName']              ?? null
+		);
+	}
+
+	/**
+	 * Get the old password.
+	 *
+	 * @return string
+	 */
+    public function getOldPassword()
+    {
+        return $this->oldPassword;
+    }
+
 }

@@ -1849,4 +1849,42 @@ class MediaSiloAPI
 
 		return $this->webClient->delete( $resourcePath );
 	}
+
+	/**
+	 * Update a user profile using an array.
+	 *
+	 * @param array $args Array of new user arguments.
+	 */
+	public function updateUserProfileByArray( array $args ) {
+		$user = User::fromArray($args);
+
+		if (isset($args['password'], $args['old_password'])) {
+			$user->setPassword($args['password'], $args['old_password']);
+		}
+
+		$this->userProxy->updateUser($user);
+	}
+
+	/**
+	 * Parse an array of arguments against an array of defaults.
+	 *
+	 * @param  array $defaults The default values for the array.
+	 * @param  array $args     The arguments to override the defaults with.
+	 * @param  bool  $strict   If `true` the resulting array will contain only keys from $defaults.
+	 * @return array
+	 */
+	public static function parseArgs( array $defaults, array $args, bool $strict = false ) {
+		$final_args = [];
+
+		foreach ( $defaults as $key => $arg ) {
+			$final_args[$key] = $args[$key] ?? $defaults[ $key ];
+		}
+
+		// Don't leave anything out of the original args that wasn't a default unless strict.
+		if ( ! $strict ) {
+			$final_args = array_merge( $final_args, $args );
+		}
+
+		return $final_args;
+	}
 }
